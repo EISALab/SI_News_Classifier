@@ -1,15 +1,15 @@
 Sustainability Indicators (SI) News Classifier
 ==================
-The source code provided in this repository was developed as part of the research presented in <a href="http://hdl.handle.net/2142/45309"> <i> Advancing sustainability indicators through text mining: a feasibility demonstration. </i></a> The project is licensed under The University of Illinois/NCSA Open Source License (NCSA) (READ License.txt) and it was last updated on June 25, 2014. The repository contains:
+The source code provided in this repository were developed as part of the research project presented in <a href="http://hdl.handle.net/2142/45309"> <i> Advancing sustainability indicators through text mining: a feasibility demonstration. </i></a> The project is licensed under The University of Illinois/NCSA Open Source License (NCSA) (READ License.txt) and it was last updated on June 25, 2014. The repository contains:
 <ul>
-<li> The code for the classification algorithm presented in Rivera et. al., (2013) (SI_News_Classifier.m  and associated fucntions) </li>
-<li> The workflow used to pre-process the data in RapidMiner 5 </li>
-<li> An illustrative example of its implementation </li>
+<li> The code for the classification algorithm presented in Rivera et. al., (2013) (SI_News_Classifier.m  and associated fucntions files). </li>
+<li> The RapidMiner_5 workflow used to pre-process the data. </li>
+<li> An illustrative example of its use and implementation. </li>
 </ul>
 
-Further development of the algorithm, suggestions, corrections and new examples are encouraged and welcome.
+Further development of the algorithm, suggestions, corrections and new examples are always encouraged and welcome.
 
-##### Citation:   Rivera, S., Minsker, B., Work, D. and Roth, D. (2013) “Advancing sustainability indicators through text mining: a feasibility demonstration.” <i> submitted to Environmental Modeling and Software.
+##### Any implementation, modification or re-distribution of this code requireds a proper citation:   Rivera, S., Minsker, B., Work, D. and Roth, D. (2013) “Advancing sustainability indicators through text mining: a feasibility demonstration.” <i> submitted to Environmental Modeling and Software.
 
 ###### Note: A python copy of the code will be release later this year (2014).
 
