@@ -1,16 +1,16 @@
                    University of Illinois/NCSA
                        Open Source License
 
-        Copyright(C) 1998-2013, The Board of Trustees of the
+        Copyright(C) 1998-2014, The Board of Trustees of the
             University of Illinois.  All rights reserved.
 
                           Developed by:             
-
-                      The PerfSuite Project
-         National Center for Supercomputing Applications
+                          
+                   Samuel Rivera (srivera2@illinois.edu)
+         Environmental Informatics and Systems Analysis Group
             University of Illinois at Urbana-Champaign
 
-                 http://perfsuite.ncsa.uiuc.edu/
+                 http://eisa.ncsa.illinois.edu/
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
