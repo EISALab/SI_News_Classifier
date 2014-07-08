@@ -9,7 +9,7 @@ The source code provided in this repository were developed as part of the resear
 
 Further development of the algorithm, suggestions, corrections and new examples are always encouraged and welcome.
 
-##### Any implementation, modification or re-distribution of this code requireds a proper citation:   Rivera, S., Minsker, B., Work, D. and Roth, D. (2013) “Advancing sustainability indicators through text mining: a feasibility demonstration.” <i> submitted to Environmental Modeling and Software.
+##### We kindly ask any future publications using this software include a reference to the following publication:   Rivera, S., Minsker, B., Work, D. and Roth, D. (2013) “Advancing sustainability indicators through text mining: a feasibility demonstration.” <i> submitted to Environmental Modeling and Software.
 
 ###### Note: A python copy of the code will be release later this year (2014).
 
