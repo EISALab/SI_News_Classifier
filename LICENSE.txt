@@ -1,13 +1,14 @@
                    University of Illinois/NCSA
                        Open Source License
 
-        Copyright(C) 1998-2014, The Board of Trustees of the
+        Copyright(C) 2014 The Board of Trustees of the
             University of Illinois.  All rights reserved.
 
                           Developed by:             
                           
                    Samuel Rivera (srivera2@illinois.edu)
          Environmental Informatics and Systems Analysis Group
+         Department of Civil and Environmental Engineering University of Illinois at Urbana-Champaign
             University of Illinois at Urbana-Champaign
 
                  http://eisa.ncsa.illinois.edu/
