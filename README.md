@@ -31,22 +31,62 @@ Further development of the algorithm, suggestions, corrections and new examples 
 
 To begin using the classification algorithm, download and integrate the <b>SI_News_Classifier.m</b> function into your code. Be aware that if the provided archiving structure is changed further modifications could be required to the paths hard coded into the source code.
 
-## Implementation example
+## Example of implementation
 
-An illustartive example has been provided with the source code to help users udenrtand the structure of the input and output data. As part of the illustrative example the following files were inclueded:
+An illustartive example has been provided with the source code to help users udenrtand the structure of the input and output data. The example contains a total of 26 news articles divided in the following hierarchical tree:
+
+
+  <head>  
+   <script type='text/javascript' src='https://www.google.com/jsapi'></script>  
+   <script type='text/javascript'>  
+    google.load('visualization', '1', {packages:['orgchart']});  
+    google.setOnLoadCallback(drawChart);  
+    function drawChart() {  
+     var data = new google.visualization.DataTable();  
+     data.addColumn('string', 'Node');  
+     data.addColumn('string', 'Parent');  
+     data.addRows([  
+      ['1', ''],  
+      ['1.1', '1'],  
+      ['1.2', '1'],  
+      ['1.1.1', '1.1'],  
+      ['1.1.2', '1.1'],  
+      ['1.1.3', '1.1'],  
+      ['1.2.1', '1.2'],  
+      ['1.2.2', '1.2'],  
+      ['1.1.1.1', '1.1.1'],  
+      ['1.1.1.2', '1.1.1'],  
+      ['1.1.3.1', '1.1.3'],  
+      ['1.2.2.1', '1.2.2'],  
+      ['1.2.2.2', '1.2.2']  
+     ]);  
+     var chart = new google.visualization.OrgChart(document.getElementById('chart_div'));  
+     chart.draw(data);  
+    }  
+   </script>  
+  </head>  
+  <body>  
+   <div id='chart_div'></div>  
+  </body>
+
+
+
+
+
+As part of the illustrative example the following files were inclueded:
 
 <ul>
-<li> News_Data.xls - The data used in this illustrative example was gathered by using news of different sources.
+<li> News_Data.xls - Metadata of news articles used for the illustrative example. Below a list of the workbooks:
 <ul>
-<li> News_Labels_and_Sources - Provides a list of the news' sources and their labels.
+<li> News_Labels_and_Sources - Provides a list of the news sources and their labels
 <li> Words - List of all the words in the set of news articles obtained after pre-processing (tokenization and elimination of stop-words)
 </ul>
-<li> Example Data - Word-bag (binary and tf-dif) matrix, news labels, training and testing set.
-<li> Example_1.m - Matlab file with the implementation example.
+<li> Example Data - Word-bag (binary and tf-dif) matrix, news labels, training and testing set
+<li> Example_1.m -  Main m-file for the implementation example
 </ul>
 
 ###### Note: The set of news was pre-processed using the provided RapidMiner 5 workflow. Special attention should be paid to the order in which RapidMiner 5 and Matlab read the news articles as they are not necessarily the same.
 
-The main script is the Example_1.m. Before running the script the appropiate path to the folder containing the <i>Dataless Classification </i> (e.g. '../descartes-0.2/bin/DESCARTES') should be provided.
+The main script is the Example_1.m. Before running the script the appropiate path to the folder containing the <i>Dataless Classification </i> (e.g. '../descartes-0.2/bin/DESCARTES') should be modified in the script. 
 
 
