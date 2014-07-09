@@ -65,9 +65,9 @@ An illustartive example has been provided with the source code to help users ude
     }  
    </script>  
   </head>  
-  <body>  
+   
    <div id='chart_div'></div>  
-  </body>
+  
 
 
 
