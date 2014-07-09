@@ -35,43 +35,8 @@ To begin using the classification algorithm, download and integrate the <b>SI_Ne
 
 An illustartive example has been provided with the source code to help users udenrtand the structure of the input and output data. The example contains a total of 26 news articles divided in the following hierarchical tree:
 
-
-  <head>  
-   <script type='text/javascript' src='https://www.google.com/jsapi'></script>  
-   <script type='text/javascript'>  
-    google.load('visualization', '1', {packages:['orgchart']});  
-    google.setOnLoadCallback(drawChart);  
-    function drawChart() {  
-     var data = new google.visualization.DataTable();  
-     data.addColumn('string', 'Node');  
-     data.addColumn('string', 'Parent');  
-     data.addRows([  
-      ['1', ''],  
-      ['1.1', '1'],  
-      ['1.2', '1'],  
-      ['1.1.1', '1.1'],  
-      ['1.1.2', '1.1'],  
-      ['1.1.3', '1.1'],  
-      ['1.2.1', '1.2'],  
-      ['1.2.2', '1.2'],  
-      ['1.1.1.1', '1.1.1'],  
-      ['1.1.1.2', '1.1.1'],  
-      ['1.1.3.1', '1.1.3'],  
-      ['1.2.2.1', '1.2.2'],  
-      ['1.2.2.2', '1.2.2']  
-     ]);  
-     var chart = new google.visualization.OrgChart(document.getElementById('chart_div'));  
-     chart.draw(data);  
-    }  
-   </script>  
-  </head>  
-   
-   <div id='chart_div'></div>  
+![alt tag] (https://github.com/SammyRivera/SI_News_Classifier/blob/master/Example_1/Example_1_hierarchical_tree.png)
   
-
-
-
-
 
 As part of the illustrative example the following files were inclueded:
 
