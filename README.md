@@ -35,7 +35,7 @@ To begin using the classification algorithm, download and integrate the <b>SI_Ne
 
 An illustartive example has been provided with the source code to help users udenrtand the structure of the input and output data. The example contains a total of 26 news articles divided in the following hierarchical tree:
 
-Hierarchical tree: ![alt text](https://raw.github.com/SammyRivera/SI_News_Classifier/blob/master/Example_1/Example_1_hierarchical_tree.png)
+Hierarchical tree: ![alt text](https://raw.githubusercontent.com/SammyRivera/SI_News_Classifier/master/Example_1/Example_1_hierarchical_tree.png?token=3780858__eyJzY29wZSI6IlJhd0Jsb2I6U2FtbXlSaXZlcmEvU0lfTmV3c19DbGFzc2lmaWVyL21hc3Rlci9FeGFtcGxlXzEvRXhhbXBsZV8xX2hpZXJhcmNoaWNhbF90cmVlLnBuZyIsImV4cGlyZXMiOjE0MDU0NzA3ODl9--0821a86c34de77319a13cf13b449489ab82b5b01)
   
 
 As part of the illustrative example the following files were inclueded:
