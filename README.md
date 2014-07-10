@@ -7,12 +7,12 @@ The source codes provided in this repository were developed as part of the resea
 <li> An illustrative example of its use and implementation. </li>
 </ul>
 
-Further development of the algorithm, suggestions, corrections and new examples are always encouraged and welcome.
+Further development of the algorithm, suggestions, corrections and new examples are always encouraged and welcomed.
 
 ### Citing this work
 ##### We kindly ask any future publications using this software to include a reference to the following publication:   Rivera, S., Minsker, B., Work, D. and Roth, D. (2013) “Advancing sustainability indicators through text mining: a feasibility demonstration.” <i> submitted to Environmental Modeling and Software.
 
-###### Note: A python copy of the code will be release later this year (2014). The documentation will be changed to address any concerns related to the python copy.
+###### Note: A python copy of the code will be released later this year (2014). The documentation will be changed to address any concerns related to the python copy.
 
 
 ## Installation
@@ -29,7 +29,7 @@ Further development of the algorithm, suggestions, corrections and new examples 
 
 ### Install
 
-To begin using the classification algorithm, download and integrate the <b>SI_News_Classifier.m</b> function into your code. Be aware that if the provided archiving structure is changed further modifications could be required to the paths hard coded into the source code.
+To begin using the classification algorithm, download and integrate the <b>SI_News_Classifier.m</b> function into your code. Be aware that if the provided archiving structure is changed, further modifications could be required to the paths hard coded into the source code.
 
 ## Example of implementation
 
@@ -38,10 +38,10 @@ An  illustrative example has been provided with the source code to help users un
 ![alt text](https://raw.githubusercontent.com/SammyRivera/SI_News_Classifier/master/Example_1/Example_1_hierarchical_tree.png?token=3780858__eyJzY29wZSI6IlJhd0Jsb2I6U2FtbXlSaXZlcmEvU0lfTmV3c19DbGFzc2lmaWVyL21hc3Rlci9FeGFtcGxlXzEvRXhhbXBsZV8xX2hpZXJhcmNoaWNhbF90cmVlLnBuZyIsImV4cGlyZXMiOjE0MDU0NzA3ODl9--0821a86c34de77319a13cf13b449489ab82b5b01)
 
 <b> Objective: </b> Classify news articles under the sustainability indicators.
-As part of the illustrative example the following files are included:
+As part of the illustrative example, the following files are included:
 
 <ul>
-<li> News_Data.xls - Metadata of news articles used for the illustrative example. Below a list of the workbooks:
+<li> News_Data.xls - Metadata of news articles used for the illustrative example. Below, a list of the workbooks is presented:
 <ul>
 <li> News_Labels_and_Sources - Provides a list of the news sources and their labels
 <li> Words - List of all the words in the set of news articles obtained after pre-processing (tokenization and elimination of stop-words)
