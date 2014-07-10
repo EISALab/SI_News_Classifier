@@ -52,7 +52,7 @@ As part of the illustrative example, the following files are included:
 
 ###### Note: The set of news was pre-processed using the provided RapidMiner 5 workflow. Special attention should be paid to the order in which RapidMiner 5 and Matlab read the news articles as they are not necessarily the same.
 
-The main script is the Example_1.m. Before running the script the appropriate path to the folder containing the <i>Dataless Classification </i> (e.g. '../descartes-0.2/bin/DESCARTES') should be modified in the script.
+The main script is the Example_1.m. Before running the script, the appropriate path to the folder containing the <i>Dataless Classification </i> (e.g. '../descartes-0.2/bin/DESCARTES') should be modified in the script.
 
 <b>Outputs:</b>  
 <ul>
