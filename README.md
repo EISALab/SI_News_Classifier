@@ -1,8 +1,8 @@
 Sustainability Indicators (SI) News Classifier
 ==================
-The source code provided in this repository were developed as part of the research project presented in <a href="http://hdl.handle.net/2142/45309"> <i> Advancing sustainability indicators through text mining: a feasibility demonstration. </i></a> The project is licensed under The University of Illinois/NCSA Open Source License (NCSA) (READ License.txt) and it was last updated on June 25, 2014. The repository contains:
+The source codes provided in this repository were developed as part of the research project presented in <a href="http://hdl.handle.net/2142/45309"> <i> Advancing sustainability indicators through text mining: a feasibility demonstration. </i></a> The project is licensed under The University of Illinois/NCSA Open Source License (NCSA) (READ License.txt) and it was last updated on June 25, 2014. The repository contains:
 <ul>
-<li> The m-code codes for the classification algorithm presented in Rivera et. al., (2013) (SI_News_Classifier.m  and associated fucntions files). </li>
+<li> The m-code codes for the classification algorithm presented in Rivera et. al., (2013) (SI_News_Classifier.m  and associated functions files). </li>
 <li> The RapidMiner_5 workflow used to pre-process the data. </li>
 <li> An illustrative example of its use and implementation. </li>
 </ul>
@@ -33,12 +33,12 @@ To begin using the classification algorithm, download and integrate the <b>SI_Ne
 
 ## Example of implementation
 
-An illustartive example has been provided with the source code to help users udenrtand the structure of the input and output data. The example contains a total of 26 news articles divided in the following hierarchical tree:
+An  illustrative example has been provided with the source code to help users understand the structure of the input and output data. The example contains a total of 26 news articles divided in the following hierarchical tree:
 
 ![alt text](https://raw.githubusercontent.com/SammyRivera/SI_News_Classifier/master/Example_1/Example_1_hierarchical_tree.png?token=3780858__eyJzY29wZSI6IlJhd0Jsb2I6U2FtbXlSaXZlcmEvU0lfTmV3c19DbGFzc2lmaWVyL21hc3Rlci9FeGFtcGxlXzEvRXhhbXBsZV8xX2hpZXJhcmNoaWNhbF90cmVlLnBuZyIsImV4cGlyZXMiOjE0MDU0NzA3ODl9--0821a86c34de77319a13cf13b449489ab82b5b01)
 
 <b> Objective: </b> Classify news articles under the sustainability indicators.
-As part of the illustrative example the following files are inclueded:
+As part of the illustrative example the following files are included:
 
 <ul>
 <li> News_Data.xls - Metadata of news articles used for the illustrative example. Below a list of the workbooks:
@@ -52,7 +52,7 @@ As part of the illustrative example the following files are inclueded:
 
 ###### Note: The set of news was pre-processed using the provided RapidMiner 5 workflow. Special attention should be paid to the order in which RapidMiner 5 and Matlab read the news articles as they are not necessarily the same.
 
-The main script is the Example_1.m. Before running the script the appropiate path to the folder containing the <i>Dataless Classification </i> (e.g. '../descartes-0.2/bin/DESCARTES') should be modified in the script.
+The main script is the Example_1.m. Before running the script the appropriate path to the folder containing the <i>Dataless Classification </i> (e.g. '../descartes-0.2/bin/DESCARTES') should be modified in the script.
 
 <b>Outputs:</b>  
 <ul>
