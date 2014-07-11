@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<process version="5.2.008">
+  <context>
+    <input/>
+    <output/>
+    <macros/>
+  </context>
+  <operator activated="true" class="process" compatibility="5.2.008" expanded="true" name="Process">
+    <parameter key="logverbosity" value="init"/>
+    <parameter key="random_seed" value="2001"/>
+    <parameter key="send_mail" value="never"/>
+    <parameter key="notification_email" value=""/>
+    <parameter key="process_duration_for_mail" value="30"/>
+    <parameter key="encoding" value="SYSTEM"/>
+    <parameter key="parallelize_main_process" value="false"/>
+    <process expanded="true" height="432" width="614">
+      <operator activated="true" class="text:process_document_from_file" compatibility="5.2.004" expanded="true" height="76" name="Process Documents from Files" width="90" x="112" y="30">
+        <list key="text_directories">
+          <parameter key="News" value="C:\Users\Sammys\Desktop\Water_News\News Articles"/>
+        </list>
+        <parameter key="file_pattern" value="*txt"/>
+        <parameter key="extract_text_only" value="true"/>
+        <parameter key="use_file_extension_as_type" value="false"/>
+        <parameter key="content_type" value="txt"/>
+        <parameter key="encoding" value="SYSTEM"/>
+        <parameter key="create_word_vector" value="true"/>
+        <parameter key="vector_creation" value="TF-IDF"/>
+        <parameter key="add_meta_information" value="true"/>
+        <parameter key="keep_text" value="true"/>
+        <parameter key="prune_method" value="none"/>
+        <parameter key="prunde_below_percent" value="3.0"/>
+        <parameter key="prune_above_percent" value="30.0"/>
+        <parameter key="prune_below_absolute" value="2"/>
+        <parameter key="prune_above_absolute" value="9999"/>
+        <parameter key="prune_below_rank" value="5.0"/>
+        <parameter key="prune_above_rank" value="5.0"/>
+        <parameter key="datamanagement" value="double_sparse_array"/>
+        <parameter key="parallelize_vector_creation" value="false"/>
+        <process expanded="true" height="457" width="748">
+          <operator activated="true" class="text:tokenize" compatibility="5.2.004" expanded="true" height="60" name="Tokenize" width="90" x="45" y="75">
+            <parameter key="mode" value="non letters"/>
+            <parameter key="characters" value=".:"/>
+            <parameter key="language" value="English"/>
+            <parameter key="max_token_length" value="3"/>
+          </operator>
+          <operator activated="true" class="text:filter_stopwords_dictionary" compatibility="5.2.004" expanded="true" height="76" name="Filter Stopwords (Dictionary)" width="90" x="112" y="165">
+            <parameter key="file" value="..\src\Rapid_Miner_Workflows\dictionary.txt"/>
+            <parameter key="case_sensitive" value="true"/>
+            <parameter key="encoding" value="SYSTEM"/>
+          </operator>
+          <operator activated="true" class="text:transform_cases" compatibility="5.2.004" expanded="true" height="60" name="Transform Cases" width="90" x="294" y="176">
+            <parameter key="transform_to" value="lower case"/>
+          </operator>
+          <operator activated="true" class="text:filter_stopwords_english" compatibility="5.2.004" expanded="true" height="60" name="Filter Stopwords (English)" width="90" x="447" y="165"/>
+          <operator activated="true" class="text:filter_by_length" compatibility="5.2.004" expanded="true" height="60" name="Filter Tokens (by Length)" width="90" x="581" y="165">
+            <parameter key="min_chars" value="2"/>
+            <parameter key="max_chars" value="999"/>
+          </operator>
+          <connect from_port="document" to_op="Tokenize" to_port="document"/>
+          <connect from_op="Tokenize" from_port="document" to_op="Filter Stopwords (Dictionary)" to_port="document"/>
+          <connect from_op="Filter Stopwords (Dictionary)" from_port="document" to_op="Transform Cases" to_port="document"/>
+          <connect from_op="Transform Cases" from_port="document" to_op="Filter Stopwords (English)" to_port="document"/>
+          <connect from_op="Filter Stopwords (English)" from_port="document" to_op="Filter Tokens (by Length)" to_port="document"/>
+          <connect from_op="Filter Tokens (by Length)" from_port="document" to_port="document 1"/>
+          <portSpacing port="source_document" spacing="0"/>
+          <portSpacing port="sink_document 1" spacing="0"/>
+          <portSpacing port="sink_document 2" spacing="0"/>
+        </process>
+      </operator>
+      <operator activated="true" class="write_special" compatibility="5.2.008" expanded="true" height="60" name="Write Special Format" width="90" x="313" y="165">
+        <parameter key="example_set_file" value="..\src\Rapid_Miner_Workflows\matlab_github_words_tfdif.dat"/>
+        <parameter key="special_format" value="$a[,]"/>
+        <parameter key="fraction_digits" value="-1"/>
+        <parameter key="add_line_separator" value="true"/>
+        <parameter key="quote_nominal_values" value="true"/>
+        <parameter key="zipped" value="false"/>
+        <parameter key="overwrite_mode" value="overwrite"/>
+        <parameter key="encoding" value="SYSTEM"/>
+      </operator>
+      <connect from_op="Process Documents from Files" from_port="example set" to_op="Write Special Format" to_port="input"/>
+      <connect from_op="Process Documents from Files" from_port="word list" to_port="result 2"/>
+      <connect from_op="Write Special Format" from_port="through" to_port="result 1"/>
+      <portSpacing port="source_input 1" spacing="0"/>
+      <portSpacing port="sink_result 1" spacing="0"/>
+      <portSpacing port="sink_result 2" spacing="0"/>
+      <portSpacing port="sink_result 3" spacing="0"/>
+    </process>
+  </operator>
+</process>

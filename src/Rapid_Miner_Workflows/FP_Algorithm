@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<process version="5.2.008">
+  <context>
+    <input/>
+    <output/>
+    <macros/>
+  </context>
+  <operator activated="true" class="process" compatibility="5.2.008" expanded="true" name="Process">
+    <parameter key="logverbosity" value="init"/>
+    <parameter key="random_seed" value="2001"/>
+    <parameter key="send_mail" value="never"/>
+    <parameter key="notification_email" value=""/>
+    <parameter key="process_duration_for_mail" value="30"/>
+    <parameter key="encoding" value="SYSTEM"/>
+    <parameter key="parallelize_main_process" value="false"/>
+    <process expanded="true" height="505" width="828">
+      <operator activated="true" class="text:process_document_from_file" compatibility="5.2.004" expanded="true" height="76" name="Process Documents from Files" width="90" x="45" y="30">
+        <list key="text_directories"/>
+        <parameter key="file_pattern" value="*txt"/>
+        <parameter key="extract_text_only" value="true"/>
+        <parameter key="use_file_extension_as_type" value="false"/>
+        <parameter key="content_type" value="txt"/>
+        <parameter key="encoding" value="SYSTEM"/>
+        <parameter key="create_word_vector" value="true"/>
+        <parameter key="vector_creation" value="Binary Term Occurrences"/>
+        <parameter key="add_meta_information" value="true"/>
+        <parameter key="keep_text" value="false"/>
+        <parameter key="prune_method" value="absolute"/>
+        <parameter key="prunde_below_percent" value="3.0"/>
+        <parameter key="prune_above_percent" value="30.0"/>
+        <parameter key="prune_below_absolute" value="2"/>
+        <parameter key="prune_above_absolute" value="9999"/>
+        <parameter key="prune_below_rank" value="5.0"/>
+        <parameter key="prune_above_rank" value="5.0"/>
+        <parameter key="datamanagement" value="short_sparse_array"/>
+        <parameter key="parallelize_vector_creation" value="false"/>
+        <process expanded="true" height="457" width="748">
+          <operator activated="true" class="text:tokenize" compatibility="5.2.004" expanded="true" height="60" name="Tokenize" width="90" x="45" y="75">
+            <parameter key="mode" value="non letters"/>
+            <parameter key="characters" value=".:"/>
+            <parameter key="language" value="English"/>
+            <parameter key="max_token_length" value="3"/>
+          </operator>
+          <operator activated="true" class="text:filter_stopwords_dictionary" compatibility="5.2.004" expanded="true" height="76" name="Filter Stopwords (Dictionary)" width="90" x="112" y="165">
+            <parameter key="file" value="..\src\Rapid_Miner_Workflows\dictionary.txt"/>
+            <parameter key="case_sensitive" value="true"/>
+            <parameter key="encoding" value="SYSTEM"/>
+          </operator>
+          <operator activated="true" class="text:transform_cases" compatibility="5.2.004" expanded="true" height="60" name="Transform Cases" width="90" x="294" y="176">
+            <parameter key="transform_to" value="lower case"/>
+          </operator>
+          <operator activated="true" class="text:filter_stopwords_english" compatibility="5.2.004" expanded="true" height="60" name="Filter Stopwords (English)" width="90" x="447" y="165"/>
+          <operator activated="true" class="text:filter_by_length" compatibility="5.2.004" expanded="true" height="60" name="Filter Tokens (by Length)" width="90" x="581" y="165">
+            <parameter key="min_chars" value="2"/>
+            <parameter key="max_chars" value="999"/>
+          </operator>
+          <connect from_port="document" to_op="Tokenize" to_port="document"/>
+          <connect from_op="Tokenize" from_port="document" to_op="Filter Stopwords (Dictionary)" to_port="document"/>
+          <connect from_op="Filter Stopwords (Dictionary)" from_port="document" to_op="Transform Cases" to_port="document"/>
+          <connect from_op="Transform Cases" from_port="document" to_op="Filter Stopwords (English)" to_port="document"/>
+          <connect from_op="Filter Stopwords (English)" from_port="document" to_op="Filter Tokens (by Length)" to_port="document"/>
+          <connect from_op="Filter Tokens (by Length)" from_port="document" to_port="document 1"/>
+          <portSpacing port="source_document" spacing="0"/>
+          <portSpacing port="sink_document 1" spacing="0"/>
+          <portSpacing port="sink_document 2" spacing="0"/>
+        </process>
+      </operator>
+      <operator activated="true" class="numerical_to_binominal" compatibility="5.2.008" expanded="true" height="76" name="Numerical to Binominal" width="90" x="179" y="30">
+        <parameter key="attribute_filter_type" value="all"/>
+        <parameter key="attribute" value=""/>
+        <parameter key="attributes" value=""/>
+        <parameter key="use_except_expression" value="false"/>
+        <parameter key="value_type" value="numeric"/>
+        <parameter key="use_value_type_exception" value="false"/>
+        <parameter key="except_value_type" value="real"/>
+        <parameter key="block_type" value="value_series"/>
+        <parameter key="use_block_type_exception" value="false"/>
+        <parameter key="except_block_type" value="value_series_end"/>
+        <parameter key="invert_selection" value="false"/>
+        <parameter key="include_special_attributes" value="false"/>
+        <parameter key="min" value="0.0"/>
+        <parameter key="max" value="0.0"/>
+      </operator>
+      <operator activated="true" class="fp_growth" compatibility="5.2.008" expanded="true" height="76" name="FP-Growth" width="90" x="380" y="120">
+        <parameter key="find_min_number_of_itemsets" value="true"/>
+        <parameter key="min_number_of_itemsets" value="100"/>
+        <parameter key="max_number_of_retries" value="15"/>
+        <parameter key="min_support" value="0.9"/>
+        <parameter key="max_items" value="-1"/>
+        <parameter key="keep_example_set" value="false"/>
+      </operator>
+      <operator activated="false" class="multiply" compatibility="5.2.008" expanded="true" height="60" name="Multiply" width="90" x="45" y="210"/>
+      <operator activated="true" class="create_association_rules" compatibility="5.2.008" expanded="true" height="76" name="Create Association Rules" width="90" x="514" y="165">
+        <parameter key="criterion" value="confidence"/>
+        <parameter key="min_confidence" value="0.8"/>
+        <parameter key="min_criterion_value" value="0.8"/>
+        <parameter key="gain_theta" value="2.0"/>
+        <parameter key="laplace_k" value="1.0"/>
+      </operator>
+      <operator activated="false" class="reporting:generate_report" compatibility="5.2.000" expanded="true" height="60" name="Generate Report" width="90" x="313" y="345">
+        <parameter key="report_name" value="Pruebas"/>
+        <parameter key="format" value="Excel"/>
+        <parameter key="report_to_repository" value="false"/>
+        <parameter key="excel_output_file" value="C:\Users\Sammys\Desktop\Water_News\RapidMiner_News_Years_All_Many_Copy\Final_Result_Classification\FP_Growth\Academic Performance Index\Academic Performance Index_Ass_Rules\Ass_rules.xls"/>
+        <parameter key="html_image_format" value="png"/>
+        <parameter key="image_col_span" value="8"/>
+        <parameter key="image_row_span" value="17"/>
+        <parameter key="page_size" value="A4"/>
+        <parameter key="page_format" value="portrait"/>
+        <parameter key="template_type" value="none"/>
+        <parameter key="image_alignment" value="aspect_ratio"/>
+        <parameter key="set_background_color" value="false"/>
+        <parameter key="background_color" value="255,255,255"/>
+        <parameter key="page_width" value="595"/>
+        <parameter key="page_height" value="842"/>
+        <parameter key="top_page_margin" value="36"/>
+        <parameter key="bottom_page_margin" value="36"/>
+        <parameter key="left_page_margin" value="36"/>
+        <parameter key="right_page_margin" value="36"/>
+        <parameter key="section_one_font_size" value="12.0"/>
+        <parameter key="section_one_font_style_bold" value="false"/>
+        <parameter key="section_one_font_style_italic" value="false"/>
+        <parameter key="section_one_font_style_underline" value="false"/>
+        <parameter key="section_one_font_style_strikethrough" value="false"/>
+        <parameter key="section_one_font_color" value="0,0,0"/>
+        <parameter key="section_two_font_size" value="12.0"/>
+        <parameter key="section_two_font_style_bold" value="false"/>
+        <parameter key="section_two_font_style_italic" value="false"/>
+        <parameter key="section_two_font_style_underline" value="false"/>
+        <parameter key="section_two_font_style_strikethrough" value="false"/>
+        <parameter key="section_two_font_color" value="0,0,0"/>
+        <parameter key="section_three_font_size" value="12.0"/>
+        <parameter key="section_three_font_style_bold" value="false"/>
+        <parameter key="section_three_font_style_italic" value="false"/>
+        <parameter key="section_three_font_style_underline" value="false"/>
+        <parameter key="section_three_font_style_strikethrough" value="false"/>
+        <parameter key="section_three_font_color" value="0,0,0"/>
+        <parameter key="section_four_font_size" value="12.0"/>
+        <parameter key="section_four_font_style_bold" value="false"/>
+        <parameter key="section_four_font_style_italic" value="false"/>
+        <parameter key="section_four_font_style_underline" value="false"/>
+        <parameter key="section_four_font_style_strikethrough" value="false"/>
+        <parameter key="section_four_font_color" value="0,0,0"/>
+        <parameter key="section_five_font_size" value="12.0"/>
+        <parameter key="section_five_font_style_bold" value="false"/>
+        <parameter key="section_five_font_style_italic" value="false"/>
+        <parameter key="section_five_font_style_underline" value="false"/>
+        <parameter key="section_five_font_style_strikethrough" value="false"/>
+        <parameter key="section_five_font_color" value="0,0,0"/>
+        <parameter key="text_content_font_size" value="12.0"/>
+        <parameter key="text_content_font_style_bold" value="false"/>
+        <parameter key="text_content_font_style_italic" value="false"/>
+        <parameter key="text_content_font_style_underline" value="false"/>
+        <parameter key="text_content_font_style_strikethrough" value="false"/>
+        <parameter key="text_content_font_color" value="0,0,0"/>
+        <parameter key="system_fonts" value="false"/>
+        <parameter key="directory_fonts" value="false"/>
+        <parameter key="table_column_number" value="8"/>
+        <parameter key="table_header_color" value="128,128,128"/>
+        <parameter key="table_row_color_one" value="255,255,255"/>
+        <parameter key="table_row_color_two" value="192,192,192"/>
+      </operator>
+      <operator activated="false" class="reporting:report" compatibility="5.2.000" expanded="true" height="60" name="Report" width="90" x="514" y="345">
+        <parameter key="report_name" value="Pruebas"/>
+        <parameter key="report_item_header" value="pruebas"/>
+        <parameter key="specified" value="true"/>
+        <parameter key="reportable_type" value="Association Rules"/>
+        <parameter key="renderer_name" value="Table View"/>
+        <list key="parameters">
+          <parameter key="min_row" value="1"/>
+          <parameter key="max_row" value="2147483647"/>
+          <parameter key="min_column" value="1"/>
+          <parameter key="max_column" value="2147483647"/>
+          <parameter key="sort_column" value="2147483647"/>
+          <parameter key="sort_decreasing" value="true"/>
+        </list>
+        <parameter key="image_width" value="800"/>
+        <parameter key="image_height" value="600"/>
+      </operator>
+      <connect from_op="Process Documents from Files" from_port="example set" to_op="Numerical to Binominal" to_port="example set input"/>
+      <connect from_op="Process Documents from Files" from_port="word list" to_port="result 1"/>
+      <connect from_op="Numerical to Binominal" from_port="example set output" to_op="FP-Growth" to_port="example set"/>
+      <connect from_op="FP-Growth" from_port="example set" to_port="result 2"/>
+      <connect from_op="FP-Growth" from_port="frequent sets" to_op="Create Association Rules" to_port="item sets"/>
+      <connect from_op="Create Association Rules" from_port="rules" to_port="result 3"/>
+      <connect from_op="Create Association Rules" from_port="item sets" to_port="result 4"/>
+      <portSpacing port="source_input 1" spacing="0"/>
+      <portSpacing port="sink_result 1" spacing="0"/>
+      <portSpacing port="sink_result 2" spacing="0"/>
+      <portSpacing port="sink_result 3" spacing="0"/>
+      <portSpacing port="sink_result 4" spacing="0"/>
+      <portSpacing port="sink_result 5" spacing="0"/>
+    </process>
+  </operator>
+</process>
